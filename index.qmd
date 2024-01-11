@@ -1,0 +1,122 @@
+---
+title: "Pengaruh Tingkat Pengangguran Terbuka di Provinsi Banten Terhadap PDRB Provinsi Banten Pada Tahun 2013-2022"
+subtitle: "Metode Penelitian Politeknik APP Jakarta"
+author: "Jasmine Chiarra Al Nasywa"
+date: 2024-01-11
+number-sections: true
+format:
+  html: default
+  docx: default
+---
+
+![](poltekapp.jpg){fig-align="center" width="270"}
+
+## Pendahuluan
+
+### Latar belakang
+
+Indonesia merupakan negara dengan populasi sebanyak 274 juta penduduk yang menjadikannya negara dengan penduduk terbanyak ke-4 di dunia setelah Tiongkok, India, dan Amerika Serikat. Banyaknya penduduk tersebut berpengaruh terhadap besarnya Produk Domestik Bruto (PDB) Indonesia. PDB adalah total nilai produksi dan jasa yang dihasilkan oleh semua individu atau perusahaan dalam suatu negara. Variabel yang termasuk dalam perhitungan PDB adalah konsumsi, investasi, pengeluaran pemerintah, dan ekspor impor. Pada tahun 2022, PDB Indonesia mencapai Rp 19.588,4 triliun. Walaupun memiliki PDB yang besar, nyatanya rata-rata daerah di Indonesia pada tahun 2022 memiliki PDRB (Pendapatan Domestik Regional Bruto) rendah yaitu sebesar 71,03 juta. DKI Jakarta menjadi daerah dengan PDRB tertinggi pada periode tersebut yaitu berada pada angka 298.36 juta. Di urutan ke-15 ditempati oleh Provinsi Banten dengan PDRB sebesar 60,99 juta.
+
+Dalam segi ekonomi dan kependudukan, Provinsi Banten dapat dikatakan masih berada jauh dibawah beberapa provinsi atau daerah di sekitarnya. Maraknya praktek KKN, lambatnya laju perekonomian ekonomi, sampai ke masalah tingginya tingkat pengangguran menjadi beberapa isu yang belum dapat diatasi di daerah ini. Khususnya masalah pengangguran, terdapat sebesar 8,09% pengangguran terbuka di Provinsi Banten pada tahun 2022. Hal ini menjadikan Banten sebagai provinsi dengan tingkat pengangguran tertinggi ke-3 dari seluruh provinsi di Indonesia. Tingkat pengangguran dapat menjadi salah satu faktor yang dapat mencegah pertumbuhan ekonomi di dalam suatu daerah.
+
+### Ruang lingkup
+
+Dalam penelitian ini, penulis mengambil objek penelitian dari Badan Pusat Statistik Provinsi Banten. Penelitian ini mencakup 2 variabel antara lain angka pengangguran terbuka di Provinsi Banten dan PDRB Provinsi Banten. Adapun data yang digunakan adalah data dari tahun 2013-2022 dan berupa time series.
+
+### Rumusan masalah
+
+Berdasarkan uraian latar belakang yang telah dijabarkan di atas, maka permasalahan pokok pada penelitian ini adalah sebagai berikut:
+
+1.  Apakah tingkat angka pengangguran terbuka berpengaruh terhadap PDRB di Provinsi Banten?
+
+2.  Bagaimana hubungan tingkat angka pengangguran terbuka terhadap PDRB di Provinsi Banten?
+
+### Tujuan dan manfaat penelitian
+
+Berpacu dari uraian latar belakang dan rumusan masalah yang ada, penelitian ini bermanfaat untuk mengetahui pengaruh serta hubungan antara tingkat angka pengangguran terbuka di Provinsi Banten dengan PDRB Provinsi Banten dalam kurun waktu 2013-2022. Manfaat dari penelitian ini yaitu mengetahui bahwasanya kedua variabel tersebut saling berhubungan dan memiliki hubungan yang negatif.
+
+### Package
+
+```{r}
+library(tidyverse)
+library(readxl)
+library(WDI) 
+```
+
+## Studi pustaka
+
+Menurut Sukimo (2011), pengangguran adalah keadaan tanpa pekerjaan yang dihadapi oleh segolongan tenaga kerja yang berusaha mencari pekerjaan tetapi tidak memperolehnya. Pengangguran terbuka sendiri adalah angkatan kerja yang sedang tidak memiliki pekerjaan dan sedang berusaha mencari namun belum mendapatkan pekerjaan tersebut.
+
+## Metode penelitian
+
+### Data
+
+| Tahun | PDRB        | Tingkat Pengangguran |
+|-------|-------------|----------------------|
+| 2013  | 331099105,5 | 9,9                  |
+| 2014  | 349584667,8 | 9,07                 |
+| 2015  | 369209288,1 | 9,55                 |
+| 2016  | 389543932,3 | 8,92                 |
+| 2017  | 412639618,3 | 9,28                 |
+| 2018  | 436581428,1 | 8,47                 |
+| 2019  | 459666415,8 | 8,11                 |
+| 2020  | 444265085,8 | 10,64                |
+| 2021  | 463469619,6 | 8,98                 |
+| 2022  | 487663415,4 | 8,09                 |
+
+Penelitian ini menggunakan data Tingkat Pengangguran Terbuka (TPT) Menurut Kabupaten/Kota di Provinsi Banten dan PDRB ADHK Menurut Kabupaten/Kota di Provinsi Banten.
+
+```{r}
+library('readxl')
+library('tidyverse')
+dat<-read_excel('C:/Metopel/UAS/BISMILLAH UAS.xlsx')
+plot(dat$X,dat$Y,xlab="PDRB",ylab="Tingkat Pengangguran")
+```
+
+### Metode analisis
+
+Metode yang dipilih adalah regresi univariat atau Ordinary Least Square (OLS) dengan 1 variabel independen. Penelitian ini bermaksud mencari hubungan antara Tingkat Pengangguran Terbuka dan PDRB Provinsi Banten. Spesifikasi yang dilakukan adalah:
+
+$$
+y_{t}=\beta_0 + \beta_1 x_t+\mu_t
+$$ di mana $y_t$ adalah PDRB Provinsi Banten dan $x_t$ adalah Tingkat Pengangguran Terbuka.
+
+## Pembahasan
+
+### Pembahasan masalah
+
+Dikarenakan penelitian ini menggunakan OLS, maka pembahasan yang diberikan mengenai hubungan antara Tingkat Pengangguran Terbuka dan PDRB Provinsi Banten. Data tersebut digabung dan dilakukan regresi sehingga memiliki tampilan seperti berikut:
+
+```{r}
+#import dataset
+library(readxl)
+dat<-read_excel('C:/Metopel/UAS/BISMILLAH UAS.xlsx')
+head(dat)
+```
+
+X = PDRB Provinsi Banten
+
+Y = Tingkat Pengangguran Terbuka
+
+### Analisis masalah
+
+Hasil regresinya adalah sebagai berikut:
+
+```{r}
+reg<-lm(Y~X,data=dat)
+summary(reg)
+```
+
+## Kesimpulan
+
+Berdasarkan hasil regresi yang telah dilakukan, dapat disimpulkan bahwa setiap angka Pengangguran Terbuka di Provinsi Banten bertambah sebanyak 100 ribu orang, maka PDRB Provinsi Banten akan menurun sebesar 0,4796 persen. Artinya, Tingkat Pengangguran terbuka di Provinsi Banten berpengaruh terhadap PDRB Provinsi Banten.
+
+## Referensi
+
+Adi, A. (2023). 10 Sektor Penopang Ekonomi Utama Indonesia pada 2022. https://databoks.katadata.co.id/datapublish/2023/12/22/10-sektor-penopang-ekonomi-utama-indonesia-pada-2022#:\~:text=Menurut%20laporan%20Badan%20Pusat%20Statistik,19.588%2C4%20triliun%20pada%202022.
+
+Badan Pusat Statistik. (n.d.-a). PDRB ADHK Menurut Kabupaten/Kota di Provinsi Banten (Juta Rupiah), 2013-2022. Retrieved January 9, 2024, from https://banten.bps.go.id/indicator/52/312/1/pdrb-adhk-menurut-kabupaten-kota-di-provinsi-banten.html
+
+Badan Pusat Statistik. (n.d.-b). Tingkat Pengangguran Terbuka (TPT) Menurut Kabupaten/Kota di Provinsi Banten (Persen), 2013-2022. Retrieved January 9, 2024, from https://banten.bps.go.id/indicator/6/157/1/tingkat-pengangguran-terbuka-tpt-menurut-kabupaten-kota.html
+
+Erlina, F. S. (2024). Daftar PDRB per Kapita di Seluruh Provinsi Indonesia pada 2022, DKI Jakarta Tetap Jadi yang Tertinggi. https://databoks.katadata.co.id/datapublish/2023/04/13/daftar-pdrb-per-kapita-di-seluruh-provinsi-indonesia-pada-2022-dki-jakarta-tetap-jadi-yang-tertinggi
